@@ -1,36 +1,34 @@
-# ---------------------------------------------
-# PREREQUISITI
-# ---------------------------------------------
+# Prerequisites
 *.d
 
-# ---------------------------------------------
-# FILE OGGETTO E BUILD
-# ---------------------------------------------
+# Object files
 *.o
 *.ko
 *.obj
 *.elf
-*.exp
-*.map
-*.ilk
 
-# Precompiled headers
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
 *.gch
 *.pch
 
-# Librerie
+# Libraries
 *.lib
 *.a
 *.la
 *.lo
 
-# Shared libraries
+# Shared objects (inc. Windows DLLs)
 *.dll
 *.so
 *.so.*
 *.dylib
 
-# Eseguibili
+# Executables
 *.exe
 *.out
 *.app
@@ -38,14 +36,13 @@
 *.x86_64
 *.hex
 
-# Debug info
+# Debug files
 *.dSYM/
 *.su
 *.idb
 *.pdb
-*.dwo
 
-# Kernel build
+# Kernel Module Compile Results
 *.mod*
 *.cmd
 .tmp_versions/
@@ -54,30 +51,13 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# ---------------------------------------------
-# CARTELLE DI BUILD ECLIPSE CDT
-# ---------------------------------------------
+# debug information files
+*.dwo
+
+# Eclipse CDT
+.settings/
 Debug/
 Release/
-.build/
 
-# ---------------------------------------------
-# FILE DI CONFIGURAZIONE ECLIPSE (non necessari nel repo)
-# ---------------------------------------------
-.settings/
-org.eclipse.cdt.managedbuilder.core.prefs
-
-# ---------------------------------------------
-# WORKSPACE ECLIPSE (NON il progetto)
-# ---------------------------------------------
-/.metadata/
-
-# ---------------------------------------------
-# IMPORTANTISSIMO:
-# NON IGNORARE I TUOI PROGETTI C E I LORO FILE
-# ---------------------------------------------
-!client-project/
-!client-project/**
-
-!server-project/
-!server-project/**
+# macOS files
+.DS_Store
