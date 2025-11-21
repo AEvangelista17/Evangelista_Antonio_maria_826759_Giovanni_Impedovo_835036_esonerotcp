@@ -1,7 +1,7 @@
 /*
  * server.c
- *git
- * Weather TCP Server - Versione Finale Conforme alla Traccia
+ *
+ * Weather TCP Server
  */
 
 #if defined WIN32
@@ -28,13 +28,13 @@ void clearwinsock() {
 #endif
 }
 
-// ----- Funzioni meteo -----
+//FUNZIONI METEO
 float get_temperature(void) { return ((float)(rand() % 500) - 100) / 10.0; }
 float get_humidity(void)    { return 20.0 + (float)(rand() % 800) / 10.0; }
 float get_wind(void)        { return (float)(rand() % 1001) / 10.0; }
 float get_pressure(void)    { return 950.0 + (float)(rand() % 1001) / 10.0; }
 
-// ----- Città supportate -----
+//CITTA' SUPPORTATE
 int is_valid_city(const char *c) {
     const char *cities[] = {
         "bari", "roma", "milano", "napoli", "torino",
@@ -58,12 +58,12 @@ int main(int argc, char *argv[]) {
 
     int port = SERVER_PORT;
 
-    // ----- PARSING ARGOMENTI -----
+
     for (int i = 1; i < argc; i++)
         if (strcmp(argv[i], "-p") == 0 && i + 1 < argc)
             port = atoi(argv[++i]);
 
-    // ----- CREAZIONE SOCKET -----
+    //CREAZIONE SOCKET
     int s = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (s < 0) {
         printf("Error creating socket\n");
@@ -76,14 +76,14 @@ int main(int argc, char *argv[]) {
     addr.sin_port = htons(port);
     addr.sin_addr.s_addr = INADDR_ANY;
 
-    // ----- BIND -----
+    //BIND
     if (bind(s, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
         printf("Bind error\n");
         closesocket(s);
         return -1;
     }
 
-    // ----- LISTEN -----
+    //LISTEN
     if (listen(s, QUEUE_SIZE) < 0) {
         printf("Listen error\n");
         closesocket(s);
@@ -92,7 +92,8 @@ int main(int argc, char *argv[]) {
 
     printf("Server in ascolto sulla porta %d...\n", port);
 
-    // ----- LOOP SERVER -----
+    //LOOP SERVER
+
     while (1) {
 
         struct sockaddr_in client_addr;

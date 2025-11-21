@@ -1,8 +1,8 @@
 /*
  * client.c
  *
- * Weather TCP Client - Versione Finale Conforme alla Traccia
- * git
+ * Weather TCP Client
+ *
  */
 
 #if defined WIN32
@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
     char city[MAX_CITY_LEN] = {0};
     int request_ok = 0;
 
-    // ----- PARSING ARGOMENTI -----
+
     for (int i = 1; i < argc; ++i) {
 
         if (!strcmp(argv[i], "-s") && i+1 < argc)
@@ -63,7 +63,7 @@ int main(int argc, char *argv[]) {
         return -1;
     }
 
-    // ----- CREAZIONE SOCKET -----
+    //CREAZIONE SOCKET
     int s = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
 
     struct sockaddr_in addr;
@@ -77,7 +77,7 @@ int main(int argc, char *argv[]) {
         return -1;
     }
 
-    // ----- COSTRUZIONE RICHIESTA -----
+    //RICHIESTA
     weather_request_t req;
     req.type = type;
     strncpy(req.city, city, MAX_CITY_LEN);
@@ -85,7 +85,7 @@ int main(int argc, char *argv[]) {
 
     send(s, (char*)&req, sizeof(req), 0);
 
-    // ----- RICEZIONE RISPOSTA -----
+    //RISPOSTA
     weather_response_t res;
     recv(s, (char*)&res, sizeof(res), 0);
 
