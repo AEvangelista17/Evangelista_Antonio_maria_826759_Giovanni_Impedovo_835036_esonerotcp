@@ -2,6 +2,7 @@
  * client.c
  *
  * Weather TCP Client - Versione Finale Conforme alla Traccia
+ * git
  */
 
 #if defined WIN32

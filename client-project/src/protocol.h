@@ -1,6 +1,6 @@
 /*
  * protocol.h
- *
+ *git
  * Protocol definitions for Weather TCP Client/Server
  */
 
